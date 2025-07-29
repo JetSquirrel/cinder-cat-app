@@ -1,6 +1,6 @@
 // 动态猫咪数据加载器
 export interface Cat {
-  id: number;
+  id: number | string;
   name: string;
   age: number;
   breed: string;

@@ -50,6 +50,11 @@
   background: white;
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.cat-card:hover {
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
 .cat-card:active {
@@ -251,6 +256,61 @@
 /* 图片加载状态 */
 .cat-image {
   transition: opacity 0.3s ease;
+}
+
+/* 滑动特效样式 */
+.swipe-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+}
+
+.like-effect {
+  animation: likeAnimation 0.8s ease-out;
+}
+
+.reject-effect {
+  animation: rejectAnimation 0.6s ease-out;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -60%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -70%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes rejectAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+/* 增强卡片阴影效果 */
+.cat-card.dragging {
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 .cat-image.loading {
